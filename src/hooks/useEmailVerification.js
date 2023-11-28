@@ -26,7 +26,7 @@ function useEmailVerification() {
         return;
       }
 
-      await appwriteAuthService.sendVerificationEmail('http://localhost:5173/verify-email');
+      await appwriteAuthService.sendVerificationEmail('https://sharespace-one.vercel.app/verify-email');
 
       const newCooldown = 58; // Set the initial cooldown value
       dispatch(setCooldown(newCooldown));

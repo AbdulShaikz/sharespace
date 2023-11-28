@@ -21,7 +21,7 @@ function SignUp() {
     setLoading(true);
     try {
       const session = await appwriteAuthService.createAccount(data);
-      await appwriteAuthService.sendVerificationEmail("http://localhost:5173/verify-email")
+      await appwriteAuthService.sendVerificationEmail("https://sharespace-one.vercel.app/verify-email")
       
       //console.log("VerifyEmail Data: ",verifyEmail);
       if (session) {
@@ -40,7 +40,7 @@ function SignUp() {
   };
 
   const handleGoogleSignIn = () => {
-    appwriteAuthService.siginWithGoogle('google', 'http://localhost:5173/google-auth-callback', 'http://localhost:5173/google-auth-callback')
+    appwriteAuthService.siginWithGoogle('google', 'https://sharespace-one.vercel.app/google-auth-callback', 'https://sharespace-one.vercel.app/google-auth-callback')
       .then(() => {
         // After successful Google Sign-In, redirecting the user to the desired page
         navigate('/');

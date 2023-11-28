@@ -29,7 +29,7 @@ function Login() {
   };
 
   const handleGoogleSignIn = () => {
-    appwriteAuthService.siginWithGoogle('google', 'http://localhost:5173/google-auth-callback', 'http://localhost:5173/google-auth-callback')
+    appwriteAuthService.siginWithGoogle('google', 'https://sharespace-one.vercel.app/google-auth-callback', 'https://sharespace-one.vercel.app/google-auth-callback')
       .then(() => {
         // After successful Google Sign-In, redirecting the user to the desired page
         navigate('/');

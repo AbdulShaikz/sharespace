@@ -17,7 +17,7 @@ function ForgotPassword() {
     try {
       const emailSent = await appwriteAuthService.resetPasswordLink(
         data.email,
-        "http://localhost:5173/reset-password"
+        "https://sharespace-one.vercel.app/forgot-password"
       );
       if (emailSent) {
         setMessage("Password Reset link has been sent to your email!");
