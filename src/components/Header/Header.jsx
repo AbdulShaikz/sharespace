@@ -1,10 +1,21 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Container, Logo, LogoutButton } from "../index.js";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 
 function Header() {
   const authStatus = useSelector((state) => state.auth.status);
   const navigate = useNavigate();
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
+  const handleItemClick = (slug) => {
+    navigate(slug);
+    setIsDrawerOpen(false);
+  };
+
   const navItems = [
     {
       name: "Home",
@@ -42,12 +53,32 @@ function Header() {
               <Logo width="80px" />
             </Link>
           </div>
-          <ul className="flex ml-auto md:gap-2 justify-center">
+          <div className="md:hidden">
+            <button onClick={toggleDrawer} className="text-white focus:outline-none">
+            <svg
+                className="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16m-7 6h7"
+                ></path>
+              </svg>
+            </button>
+          </div>
+          <ul className={`${
+              isDrawerOpen ? "block" : "hidden"
+            } md:flex flex-col md:flex-row ml-auto md:gap-2 justify-center md:items-center transition-all duration-300 ease-in-out`}>
             {navItems.map((item) =>
               item.active ? (
-                <li key={item.name} className="flex justify-center items-center">
+                <li key={item.name} className="md:flex md:justify-center md:items-center">
                   <button
-                    onClick={() => navigate(item.slug)}
+                    onClick={() => handleItemClick(item.slug)}
                     className="inline-bock px-6 py-2 duration-300 hover:bg-[#00cee6] rounded-3xl hover:text-black hover:font-semibold"
                   >
                     {item.name}
@@ -55,7 +86,7 @@ function Header() {
                 </li>
               ) : null
             )}
-            { authStatus && (<li className="flex justify-center items-center"><LogoutButton/></li>)}
+            { authStatus && (<li className="md:flex md:justify-center md:items-center"><LogoutButton closeDrawer={() => setIsDrawerOpen(false)} /></li>)}
           </ul>
         </nav>
       </Container>

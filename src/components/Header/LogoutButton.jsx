@@ -3,7 +3,8 @@ import appwriteAuthService from "../../appwrite/appwriteAuth.js";
 import {authSliceLogout} from "../../store/authSlice.js";
 import { useNavigate } from "react-router-dom";
 
-function LogoutButton() {
+  // eslint-disable-next-line react/prop-types
+  function LogoutButton({closeDrawer}) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -13,6 +14,7 @@ function LogoutButton() {
       .then(() => {
         dispatch(authSliceLogout());
         navigate('/login');
+        closeDrawer();
       })
       .catch((err) => console.log("logout Handler :: ", err));
   };
