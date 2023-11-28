@@ -31,7 +31,7 @@ function Login() {
   const handleGoogleSignIn = () => {
     appwriteAuthService.siginWithGoogle('google', 'https://sharespace-one.vercel.app/google-auth-callback', 'https://sharespace-one.vercel.app/google-auth-callback')
       .then(() => {
-        // After successful Google Sign-In, redirecting the user to the desired page
+        // After successful Google Sign-In, redirecting the user to the home page
         navigate('/');
       })
       .catch(error => {
