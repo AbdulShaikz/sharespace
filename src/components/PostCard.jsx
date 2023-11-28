@@ -18,7 +18,7 @@ function PostCard({ $id, title, thumbnail, author, status }) {
         <h2 className="text-sm text-orange-800 text-right italic">
           Published by <span>{author}</span>
         </h2>
-        <h1 className="text-3xl font-semibold ">{title}</h1>
+        <h1 className="text-2xl md:text-2xl lg:text-3xl font-semibold ">{title}</h1>
         <p className="text-green-800">
           Status:{" "}
           <span
