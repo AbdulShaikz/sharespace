@@ -75,9 +75,9 @@ export class AuthService {
     }
   }
 
-  siginWithGoogle(google,success,failure){
+  siginWithGoogle(provider,success,failure){
     try {
-      return this.account.createOAuth2Session('google',success,failure)
+      return this.account.createOAuth2Session(provider,success,failure)
     } catch (error) {
       console.log("Error while signing in with google: ", error);
       throw error;
